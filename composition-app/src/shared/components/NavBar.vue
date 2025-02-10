@@ -5,6 +5,7 @@ import type { RouterLink } from '@/router/list-routes';
 interface Props {
   title?: string;
   links: RouterLink[];
+  isSecondary?: boolean;
 }
 
 //defineProps<Props>()
@@ -15,7 +16,8 @@ console.log('props', props); */
 
 withDefaults(defineProps<Props>(), {
   title: 'CompositionApp',
-  // links: () => [] //opcional
+  // links: () => [] //opcional,
+  isSecondary: false
 })
 
 
@@ -23,10 +25,12 @@ withDefaults(defineProps<Props>(), {
 
 <template>
   <nav>
-    <img alt="Vue logo" class="logo" src="@/assets/logo.svg" width="25" height="25" />
-    <!-- <span v-if="$props.title">{{ $props.title }}</span> -->
-    <!-- <span>{{ $props.title || 'CompositionApp' }}</span> -->
-    <span>{{ $props.title }}</span>
+    <template v-if="!$props.isSecondary">
+      <img alt="Vue logo" class="logo" src="@/assets/logo.svg" width="25" height="25" />
+      <!-- <span v-if="$props.title">{{ $props.title }}</span> -->
+      <!-- <span>{{ $props.title || 'CompositionApp' }}</span> -->
+      <span>{{ $props.title }}</span>
+    </template>
 
     <RouterLink v-for="link in $props.links" :key="link.path" :to="link.path">{{ link.title }}</RouterLink>
 
@@ -64,7 +68,7 @@ nav {
   margin-top: 2rem;
 }
 
-nav a.router-link-exact-active {
+nav a.router-link-active {
   color: var(--color-text);
 }
 
