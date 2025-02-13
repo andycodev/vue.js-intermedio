@@ -11,7 +11,7 @@ Este repositorio contiene múltiples proyectos desarrollados con **Vue.js**. Cad
 
 1. Clona este repositorio:
    ```bash
-   git clone https://github.com/tu-usuario/vue.js-intermedio.git
+   git clone https://github.com/andycodev/vue.js-intermedio.git
 
 2. Navega a la carpeta del proyecto que deseas ejecutar:
    ```bash
